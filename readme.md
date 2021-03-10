@@ -12,5 +12,19 @@
     * `npm install`
     * `npm start`
 
-# set up git for this
+# timestamps: true
+
+createdAt
+
+updatedAt
+
+## in index.js
+
+a logged in user can go to this page and it shows all the messages for each user
+
+will give us an entire user object
+
+# review
+
+
 

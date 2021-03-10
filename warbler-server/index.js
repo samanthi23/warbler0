@@ -21,11 +21,15 @@ app.use(
   messagesRoutes
 );
 
+// after routes/messages.js file
+// this route /api/messages can only be accessed if a user is logged in, loginRequired
 app.get("/api/messages", loginRequired, async function(req, res, next) {
   try {
     let messages = await db.Message.find()
       .sort({ createdAt: "desc" })
+      // populate user for each individual of those messages
       .populate("user", {
+        // the fields we want from that user are username and profileImageUrl
         username: true,
         profileImageUrl: true
       });
