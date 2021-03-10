@@ -32,11 +32,16 @@ exports.getMessage = async function(req, res, next) {
 // DELETE /api/users/:id/messages/:message_id
 exports.deleteMessage = async function(req, res, next) {
   try {
+    // findById exact message to delete by id
+   // in mongoose findByIdAndRemove won't work
+   
     let foundMessage = await db.Message.findById(req.params.message_id);
     await foundMessage.remove();
 
     return res.status(200).json(foundMessage);
   } catch (err) {
     return next(err);
+    
+    // then go to routes folder messages.js
   }
 };
